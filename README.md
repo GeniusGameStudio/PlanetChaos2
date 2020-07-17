@@ -17,5 +17,5 @@ Working in progress.
 
 Alice:
 
-![Alice](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Sceenshots/Alice.png?raw=true)
+![Alice](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/Alice.png?raw=true)
 
