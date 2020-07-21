@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 268921920}
   m_Layer: 0
   m_Name: TestForeground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -523,7 +523,7 @@ PrefabInstance:
     - target: {fileID: 2796960581678269564, guid: 4c42b0189989fb945a754c98f827374b,
         type: 3}
       propertyPath: m_Name
-      value: HP_Potion
+      value: HealthZone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c42b0189989fb945a754c98f827374b, type: 3}
@@ -534,6 +534,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2121048732, guid: 1588ab7d1ee5f7e46a817063a3ca21c0, type: 3}
+      propertyPath: m_Range
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121048732, guid: 1588ab7d1ee5f7e46a817063a3ca21c0, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2121048733, guid: 1588ab7d1ee5f7e46a817063a3ca21c0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
     - target: {fileID: 3507329289765688134, guid: 1588ab7d1ee5f7e46a817063a3ca21c0,
         type: 3}
       propertyPath: m_LocalPosition.x
