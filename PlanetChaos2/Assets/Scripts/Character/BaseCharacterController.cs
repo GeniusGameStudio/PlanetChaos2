@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseCharacterController : ICharacterBehaviour
+public class BaseCharacterController : BaseCharacterBehaviour
 {
     protected new void Awake()
     {
