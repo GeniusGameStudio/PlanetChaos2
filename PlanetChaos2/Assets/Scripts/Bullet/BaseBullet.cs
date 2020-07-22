@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BaseBullet : MonoBehaviour, IShoot
+public abstract class BaseBullet : MonoBehaviour, IShoot, IDisappear
 {
     protected Rigidbody2D rb;
+
+    public void Disappear()
+    {
+        Destroy(gameObject);
+    }
 
     public void Shoot(Vector2 shootDirection, float shootPower)
     {
@@ -28,6 +33,13 @@ public abstract class BaseBullet : MonoBehaviour, IShoot
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        //8秒后销毁，以免占用内存
+        Invoke("Disappear", 8f);
+    }
+
+    private void Start()
+    {
+        UpdateAngle();
     }
 
     // Update is called once per frame

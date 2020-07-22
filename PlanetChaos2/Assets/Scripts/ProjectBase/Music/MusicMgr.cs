@@ -136,4 +136,12 @@ public class MusicMgr : BaseManager<MusicMgr>
             GameObject.Destroy(source);
         }
     }
+
+    /// <summary>
+    /// 清空音效列表
+    /// </summary>
+    public void ClearSoundList()
+    {
+        soundList.Clear();
+    }
 }

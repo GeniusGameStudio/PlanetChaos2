@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1188088368}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.07, z: -0.36}
+  m_LocalPosition: {x: 0, y: 0.07, z: -0.37}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 2796960581678269561}
@@ -43,8 +43,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.5812253, g: 0.9811321, b: 0.30081883, a: 1}
-  m_Intensity: 6.76
-  m_Range: 0.92
+  m_Intensity: 2.63
+  m_Range: 1.88
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -212,7 +212,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: -0.005209595, y: 0.07988143}
   serializedVersion: 2
-  m_Radius: 0.32808092
+  m_Radius: 0.85
 --- !u!114 &1296287898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,5 +227,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1280
   healthPoint: 10

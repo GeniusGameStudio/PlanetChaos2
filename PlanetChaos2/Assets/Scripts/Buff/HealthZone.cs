@@ -17,6 +17,7 @@ public class HealthZone : BaseBuff
             if(heal != null)
             {
                 heal.Heal(healthPoint);
+                MusicMgr.GetInstance().PlaySound("HealthZone", false);
             }
         }
     }

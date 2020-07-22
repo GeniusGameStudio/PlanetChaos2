@@ -9,13 +9,35 @@ public class TestScript : MonoBehaviour
     {
         GameManager.GetInstance().ToString();
         InputMgr.GetInstance().StartOrEndCheck(true);
-        EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);
+        //EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);
         //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);    //卸装!
+
+        
+        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);
+
+        MusicMgr.GetInstance().PlayBkMusic("BGM1");
+        MusicMgr.GetInstance().ChangeBKValue(0.2f);
+        MusicMgr.GetInstance().ChangeSoundValue(0.2f);
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnGUI()
+    {
+        if (GUI.Button(new Rect(50, 50, 300, 100), "重新加载测试关卡"))
+        {
+            MusicMgr.GetInstance().ClearSoundList();
+            ScenesMgr.GetInstance().LoadSceneAsyn("SampleScene", ()=>{  });
+        }
+
+        if (GUI.Button(new Rect(50, 160, 300, 100), "退出游戏"))
+        {
+            Application.Quit();
+        }
+
     }
 }

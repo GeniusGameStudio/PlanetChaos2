@@ -105,7 +105,8 @@ GameObject:
   - component: {fileID: 8893332447286877839}
   - component: {fileID: 8893332447286877835}
   - component: {fileID: 8893332447286877834}
-  m_Layer: 0
+  - component: {fileID: 270984989}
+  m_Layer: 8
   m_Name: HealthBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +166,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1771984279
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 8968260990000643785, guid: 7ce4402c206d87e459ed5bc65f03a325,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -206,22 +207,22 @@ BoxCollider2D:
   m_GameObject: {fileID: 8893332447286877838}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e50bf7020a560a9489676a6f7ec63004, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.023414165}
+  m_Offset: {x: 0.00068074465, y: -0.0023114681}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.64, y: 0.64}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.64, y: 0.64}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31529927, y: 0.19250816}
+  m_Size: {x: 0.50181997, y: 0.368137}
   m_EdgeRadius: 0
 --- !u!50 &8893332447286877834
 Rigidbody2D:
@@ -244,3 +245,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &270984989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8893332447286877838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3564ffb151c05334faa856e676bb8dd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effectLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  healthPoint: 20

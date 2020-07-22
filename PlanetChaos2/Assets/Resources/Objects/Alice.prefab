@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 3507329289765688133}
   - component: {fileID: 3507329289765688132}
   - component: {fileID: 1538911575}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Alice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +265,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1771984279
   m_SortingLayer: 3
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8998285949295712188, guid: 4544eae3c1e6e2046917f72f6062efd4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -309,7 +309,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -327,7 +327,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 3507329289765688137}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: e50bf7020a560a9489676a6f7ec63004, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -347,3 +347,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHP: 100
+  currentHP: 0
+  moveSpeed: 1
+  jumpingSpeed: 4.5
+  lowUpMultiple: 2
+  fallMultiple: 2.5
+  offset: {x: 0, y: -0.38}
+  size: {x: 0.55, y: 0.16}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 768

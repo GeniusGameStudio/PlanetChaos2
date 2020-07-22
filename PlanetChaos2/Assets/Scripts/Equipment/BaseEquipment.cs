@@ -99,6 +99,7 @@ public class BaseEquipment : MonoBehaviour, IEquipment
         {
             Debug.LogError("未装备，无法卸下任何武器");
         }
+        Cursor.visible = true;
     }
 
     void Update()

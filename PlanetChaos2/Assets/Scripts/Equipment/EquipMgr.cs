@@ -15,6 +15,7 @@ public class EquipMgr : BaseManager<EquipMgr>
     private void InitEquipResDic()
     {
         equipResDic.Add("回血枪", "Objects/HealthGun");
+        equipResDic.Add("火箭筒", "Objects/Bazooka");
 
     }
 

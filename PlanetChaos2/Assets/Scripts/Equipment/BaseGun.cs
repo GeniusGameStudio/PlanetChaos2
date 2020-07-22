@@ -5,29 +5,37 @@ using UnityEngine;
 public abstract class BaseGun : BaseEquipment, IShootBullet
 {
     [Header("子弹的预制体")]
-    public GameObject bulletPrefab;     //子弹的预制体
+    public GameObject bulletPrefab;                 //子弹的预制体
 
     [Header("射击点的位置")]
-    public Transform shootTransform;    //射击点的位置
+    public Transform shootTransform;                //射击点的位置
 
-    protected float keyDownTimestamp;   //鼠标左键按下的时间戳
+    protected float keyDownTimestamp;               //鼠标左键按下的时间戳
 
-    protected float keyUpTimestamp;     //鼠标左键抬起的时间戳
+    protected float keyUpTimestamp;                 //鼠标左键抬起的时间戳
 
-    protected float shootTime;          //蓄力时间
+    protected float shootTime;                      //蓄力时间
 
     [Header("最大蓄力时间")]
-    public float maxShootTime;          //最大蓄力时间
+    public float maxShootTime;                      //最大蓄力时间
 
     [Header("发射力的大小")]
-    public float shootPower = 10;       //发射力的大小
+    public float shootPower = 10;                   //发射力的大小
 
     protected bool isShooting;
+
+    protected AudioSource storageSound;             //蓄力的音效
+
+    [Header("弹药音效对应Resources的文件名")]
+    public string bulletSoundName = "Bullet";      //弹药音效对应Resources的文件名，默认是Bullet
 
     private void Start()
     {
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", OnKeyDown);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键抬起", OnKeyUp);
+
+        //设置鼠标不可见
+        Cursor.visible = false;
     }
 
     /// <summary>
@@ -40,10 +48,15 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
         {
             keyDownTimestamp = Time.time;
             isShooting = true;
+            EventCenter.GetInstance().EventTrigger("开始蓄力");
+            MusicMgr.GetInstance().PlaySound("Storage",false, (source) => {
+                storageSound = source;
+            });
         }
         else if(key == KeyCode.Mouse1)
         {
             CancelShootBullet();
+            
         }
     }
 
@@ -82,6 +95,8 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     public void CancelShootBullet()
     {
         Debug.Log("取消了发射");
+        EventCenter.GetInstance().EventTrigger("取消发射子弹");
+        MusicMgr.GetInstance().StopSound(storageSound);
         isShooting = false;
     }
 
@@ -92,6 +107,9 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     /// <param name="shootPower"></param>
     public void ShootBullet(Transform shootTransform, float shootPower)
     {
+        EventCenter.GetInstance().EventTrigger("发射子弹");
+        MusicMgr.GetInstance().StopSound(storageSound);
+        MusicMgr.GetInstance().PlaySound(bulletSoundName, false);
         Vector2 shootDirection;
         Vector3 mousePosScreen = Input.mousePosition;
         Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePosScreen);
@@ -112,5 +130,11 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     {
         AimMouse();
         CheckShootTime();
+    }
+
+    private void OnDestroy()
+    {
+        EventCenter.GetInstance().RemoveEventListener<KeyCode>("某键按下", OnKeyDown);
+        EventCenter.GetInstance().RemoveEventListener<KeyCode>("某键抬起", OnKeyUp);
     }
 }
