@@ -19,14 +19,17 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
     protected void OnIsWeaponRight(bool isRight)
     {
-        sprite.flipX = !isRight;
+        if (isAlive && IsControlling)
+        {
+            sprite.flipX = !isRight;
+        }
     }
 
     
 
     protected void Update()
     {
-        if (isAlive)
+        if (isAlive && IsControlling)
         {
             isOnGround = OnGround();
             ProcessInput();
@@ -36,7 +39,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
     protected void FixedUpdate()
     {
-        if (isAlive)
+        if (isAlive && IsControlling)
         {
             Move();
             Jump();
@@ -195,6 +198,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
         anim.SetTrigger("Die");
         isAlive = false;
         EquipMgr.GetInstance().Unload(transform);
+        EventCenter.GetInstance().EventTrigger<BaseCharacterController>("玩家死亡", this);  //广播自己死亡的消息
     }
 
     protected void OnDestroy()

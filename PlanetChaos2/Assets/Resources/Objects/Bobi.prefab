@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1751763138295747688}
   - component: {fileID: 1751763138295747689}
   - component: {fileID: 1751763138295747691}
+  - component: {fileID: 107717518}
   m_Layer: 10
   m_Name: Bobi
   m_TagString: Player
@@ -133,7 +134,7 @@ Animator:
   m_GameObject: {fileID: 1751763138295747692}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f4eca7be8f9e5104a8ab1d82c89b4050, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7116c56cceb79f4286d09b384e7fe95, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,6 +143,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &107717518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751763138295747692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 623333403e02f8f43ab1bdc12739c24b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsControlling: 0
+  maxHP: 100
+  currentHP: 0
+  moveSpeed: 1.3
+  jumpingSpeed: 4.5
+  lowUpMultiple: 2
+  fallMultiple: 2.5
+  offset: {x: 0, y: -0.36}
+  size: {x: 0.36, y: 0.06}
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 1792
 --- !u!1 &1751763139344379887
 GameObject:
   m_ObjectHideFlags: 0

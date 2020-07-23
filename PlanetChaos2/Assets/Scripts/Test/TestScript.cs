@@ -12,11 +12,13 @@ public class TestScript : MonoBehaviour
 
 
 
-        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);
-        //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);
-        
-        //EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);
-        //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);    //卸装!
+        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);  //给Alice装备火箭筒
+        //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);        //给Alice卸下当前装备
+
+        CharacterMgr.GetInstance().Control(GameObject.Find("Alice").transform);     //控制Alice!
+
+        //EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);//给Alice装备回血枪
+        //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);    //给Alice卸下当前装备
 
         MusicMgr.GetInstance().PlayBkMusic("BGM1");
         MusicMgr.GetInstance().ChangeBKValue(0.2f);

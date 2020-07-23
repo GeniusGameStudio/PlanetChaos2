@@ -4,7 +4,7 @@ using UnityEngine.UI;
 /// <summary>
 /// 角色的行为抽象类
 /// </summary>
-public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt
+public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, IControl
 {
     protected Animator anim;                //动画机
 
@@ -16,7 +16,9 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt
 
     protected SpriteRenderer sprite;        //精灵渲染器
 
-    protected bool isAlive = true;                 //是否存活
+    protected bool isAlive = true;          //是否存活
+
+    public bool IsControlling = false;      //是否正在被控制
 
     [Header("最大生命值")]
     public int maxHP = 100;                 //最大生命值，默认100
@@ -59,7 +61,7 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt
         coll = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
         canvasTransform = transform.Find("Canvas");
-
+        
         InitData();
     }
 
@@ -109,4 +111,20 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt
     /// </summary>
     /// <param name="damage"></param>
     public virtual void DoHurt(int damage) { }
+
+    /// <summary>
+    /// 被控制
+    /// </summary>
+    public void Control()
+    {
+        IsControlling = true;
+    }
+
+    /// <summary>
+    /// 取消控制
+    /// </summary>
+    public void CancleControl()
+    {
+        IsControlling = false;
+    }
 }
