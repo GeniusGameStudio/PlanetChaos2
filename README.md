@@ -5,6 +5,14 @@ Working in progress.
 
 
 
+## 2020.7.23 Updates
+
+- Character **Bobi** added.
+- BGM and SFX added.
+- FX added.
+
+
+
 ## 2020.7.20 Updates
 
 - 2D Point Lights added.
@@ -22,6 +30,12 @@ Working in progress.
 - **Unity Simple Programming Framework** added.
 
 ## Screenshots
+
+Latest:
+
+![BasicFunction](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/BasicFunction.png?raw=true)
+
+
 
 SampleScene:
 

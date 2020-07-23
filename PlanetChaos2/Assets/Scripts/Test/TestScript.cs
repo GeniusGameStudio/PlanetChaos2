@@ -9,11 +9,14 @@ public class TestScript : MonoBehaviour
     {
         GameManager.GetInstance().ToString();
         InputMgr.GetInstance().StartOrEndCheck(true);
+
+
+
+        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);
+        //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);
+        
         //EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);
         //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);    //卸装!
-
-        
-        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);
 
         MusicMgr.GetInstance().PlayBkMusic("BGM1");
         MusicMgr.GetInstance().ChangeBKValue(0.2f);

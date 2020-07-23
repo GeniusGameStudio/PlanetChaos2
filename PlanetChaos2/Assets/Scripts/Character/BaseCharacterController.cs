@@ -14,7 +14,12 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
     protected void Start()
     {
+        EventCenter.GetInstance().AddEventListener<bool>("武器朝右", OnIsWeaponRight);
+    }
 
+    protected void OnIsWeaponRight(bool isRight)
+    {
+        sprite.flipX = !isRight;
     }
 
     
@@ -190,5 +195,10 @@ public class BaseCharacterController : BaseCharacterBehaviour
         anim.SetTrigger("Die");
         isAlive = false;
         EquipMgr.GetInstance().Unload(transform);
+    }
+
+    protected void OnDestroy()
+    {
+        EventCenter.GetInstance().RemoveEventListener<bool>("武器朝右", OnIsWeaponRight);
     }
 }

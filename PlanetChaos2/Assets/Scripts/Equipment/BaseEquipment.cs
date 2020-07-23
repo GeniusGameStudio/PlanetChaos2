@@ -13,6 +13,9 @@ public class BaseEquipment : MonoBehaviour, IEquipment
     //是否已经更改过朝向
     protected bool isChangedDir;
 
+    //是否是武器（如果不是，则不需要改变朝向）
+    protected bool isWeapon;
+
     /// <summary>
     /// 设置装备名称
     /// </summary>
@@ -27,6 +30,9 @@ public class BaseEquipment : MonoBehaviour, IEquipment
     /// </summary>
     public void AimMouse()
     {
+        if (!isWeapon)
+            return;
+
         Vector3 mousePosScreen = Input.mousePosition;
         Vector3 mousePosWorld = Camera.main.ScreenToWorldPoint(mousePosScreen);
         Vector2 weaponToMouse = new Vector2(mousePosWorld.x - transform.position.x,
@@ -43,11 +49,13 @@ public class BaseEquipment : MonoBehaviour, IEquipment
         if (weaponToMouse.x < 0f && !isChangedDir)
         {
             transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            EventCenter.GetInstance().EventTrigger<bool>("武器朝右", false);
             isChangedDir = true;
         }
         else if (weaponToMouse.x > 0f && isChangedDir)
         {
             transform.localScale = new Vector3(transform.localScale.x, -transform.localScale.y, transform.localScale.z);
+            EventCenter.GetInstance().EventTrigger<bool>("武器朝右", true);
             isChangedDir = false;
         }
         transform.localEulerAngles = new Vector3(0f, 0f, angle);

@@ -31,6 +31,7 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
 
     private void Start()
     {
+        isWeapon = true;
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", OnKeyDown);
         EventCenter.GetInstance().AddEventListener<KeyCode>("某键抬起", OnKeyUp);
 

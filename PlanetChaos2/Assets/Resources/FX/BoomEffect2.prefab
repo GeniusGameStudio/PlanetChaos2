@@ -209,3 +209,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamage: 80
+  maxForce: 5

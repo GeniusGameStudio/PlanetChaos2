@@ -7,6 +7,9 @@ public class BoomFX : BaseFX
     [Header("爆炸造成的最大伤害")]
     public int maxDamage = 50;
 
+    [Header("最大冲击力")]
+    public float maxForce;
+
     private CircleCollider2D coll;
 
     private void Awake()
@@ -35,6 +38,14 @@ public class BoomFX : BaseFX
             else
                 damage = 0;
             hurt.DoHurt(damage);
+
+            Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
+            if(rb != null)
+            {
+                Vector2 vec = boomToCollision.normalized;
+                float force = maxForce * 100000 / (distance + 1f);
+                rb.AddForce(vec * force);
+            }
         }
     }
 }

@@ -9,6 +9,9 @@ public class EquipMgr : BaseManager<EquipMgr>
     /// </summary>
     private Dictionary<string, string> equipResDic = new Dictionary<string, string>();
 
+    //当前装备的名称
+    public string CurrentEquipmentName { get; set; }
+
     /// <summary>
     /// 初始化装备资源字典
     /// </summary>
@@ -35,6 +38,7 @@ public class EquipMgr : BaseManager<EquipMgr>
             GameObject equipObj = ResMgr.GetInstance().Load<GameObject>(equipResDic[equipName]);
             IEquipment equipment = equipObj.GetComponent<IEquipment>();
             equipment.Equip(player);
+            CurrentEquipmentName = equipName;
         }
     }
 
