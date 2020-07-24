@@ -7,6 +7,7 @@ using UnityEngine.Events;
 /// <summary>
 /// 1.可以提供给外部添加帧更新事件的方法
 /// 2.可以提供给外部添加 协程的方法
+/// 3.可以提供给外部 DontDestroyOnLoad的方法
 /// </summary>
 public class MonoMgr : BaseManager<MonoMgr>
 {
@@ -50,5 +51,10 @@ public class MonoMgr : BaseManager<MonoMgr>
     public Coroutine StartCoroutine(string methodName)
     {
         return controller.StartCoroutine(methodName);
+    }
+
+    public void DontDestroyOnLoad(Object obj)
+    {
+        controller.DontDestroyOnLoadMono(obj);
     }
 }

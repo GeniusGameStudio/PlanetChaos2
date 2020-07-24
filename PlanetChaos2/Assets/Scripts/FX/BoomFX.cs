@@ -12,6 +12,8 @@ public class BoomFX : BaseFX
 
     private CircleCollider2D coll;
 
+    private Dictionary<GameObject, bool> effectObjDic = new Dictionary<GameObject, bool>();
+
     private void Awake()
     {
         coll = GetComponent<CircleCollider2D>();
@@ -19,8 +21,15 @@ public class BoomFX : BaseFX
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        IDestructable destructable = collision.GetComponent<IDestructable>();
+        if (destructable != null && !effectObjDic.ContainsKey(collision.gameObject))
+        {
+            Debug.Log(collision.name);
+            destructable.Destruct(coll);
+            effectObjDic.Add(collision.gameObject, true);
+        }
         IHurt hurt = collision.GetComponent<IHurt>();
-        if(hurt != null)
+        if(hurt != null && !effectObjDic.ContainsKey(collision.gameObject))
         {
             Vector2 boomToCollision = collision.transform.position - transform.position;
             float distance = boomToCollision.magnitude;
@@ -46,6 +55,7 @@ public class BoomFX : BaseFX
                 float force = maxForce * 100000 / (distance + 1f);
                 rb.AddForce(vec * force);
             }
+            effectObjDic.Add(collision.gameObject, true);
         }
     }
 }

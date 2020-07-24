@@ -41,4 +41,13 @@ public class MonoController : MonoBehaviour {
     {
         updateEvent -= fun;
     }
+
+    /// <summary>
+    /// 提供给外部，用于避免摧毁某物体
+    /// </summary>
+    /// <param name="obj"></param>
+    public void DontDestroyOnLoadMono(Object obj)
+    {
+        DontDestroyOnLoad(obj);
+    }
 }

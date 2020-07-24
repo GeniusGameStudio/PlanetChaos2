@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3681092814315763008}
   m_Layer: 0
   m_Name: BoomEffect
-  m_TagString: Untagged
+  m_TagString: Effect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamage: 50
-  maxForce: 3
+  maxForce: 2
+  layer:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!58 &3681092814315763008
 CircleCollider2D:
   m_ObjectHideFlags: 0

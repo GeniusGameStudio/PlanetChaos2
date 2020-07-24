@@ -13,6 +13,8 @@ public abstract class BaseBuff : MonoBehaviour, IEffect
 
     protected SpriteRenderer sprite;//精灵渲染器
 
+    protected bool isEffected;      //是否已经结束影响
+
     public virtual void Effect(){ }
 
     public virtual void EndEffect() { }

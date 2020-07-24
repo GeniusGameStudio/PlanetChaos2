@@ -38,7 +38,8 @@ public class UIManager : BaseManager<UIManager>
         GameObject obj = ResMgr.GetInstance().Load<GameObject>("UI/Canvas");
         canvas = obj.transform as RectTransform;
         GameObject.DontDestroyOnLoad(obj);
-
+        Canvas m_Canvas = canvas.GetComponent<Canvas>();
+        m_Canvas.worldCamera = Camera.main;
         //找到各层
         bot = canvas.Find("Bot");
         mid = canvas.Find("Mid");
@@ -114,8 +115,8 @@ public class UIManager : BaseManager<UIManager>
             obj.transform.localPosition = Vector3.zero;
             obj.transform.localScale = Vector3.one;
 
-            (obj.transform as RectTransform).offsetMax = Vector2.zero;
-            (obj.transform as RectTransform).offsetMin = Vector2.zero;
+            //(obj.transform as RectTransform).offsetMax = Vector2.zero;
+            //(obj.transform as RectTransform).offsetMin = Vector2.zero;
 
             //得到预设体身上的面板脚本
             T panel = obj.GetComponent<T>();

@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 50971d5d0c0a56641aac556acaa5e5bb
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 13
+  forceTextureCase: -1
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: WenQuanYi Zen Hei Sharp
+  fontNames:
+  - WenQuanYi Zen Hei Sharp
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 1
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

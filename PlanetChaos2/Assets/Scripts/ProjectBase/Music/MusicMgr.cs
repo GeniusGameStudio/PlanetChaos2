@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -45,6 +46,7 @@ public class MusicMgr : BaseManager<MusicMgr>
             GameObject obj = new GameObject();
             obj.name = "BkMusic";
             bkMusic = obj.AddComponent<AudioSource>();
+            MonoMgr.GetInstance().DontDestroyOnLoad(obj);
         }
         //异步加载背景音乐 加载完成后 播放
         ResMgr.GetInstance().LoadAsync<AudioClip>("Music/BK/" + name, (clip) =>

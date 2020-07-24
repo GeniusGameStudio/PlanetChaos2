@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 723611385}
   m_Layer: 8
   m_Name: Explosives
-  m_TagString: Untagged
+  m_TagString: Entity
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

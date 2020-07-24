@@ -11,13 +11,15 @@ public class HealthBox : BaseBuff, IDestructable
 
     public void Destruct(CircleCollider2D coll)
     {
+        //GameObject boomEffect = ResMgr.GetInstance().Load<GameObject>("FX/BoomEffect");
+        //boomEffect.transform.position = transform.position;
         Destroy(gameObject);
     }
 
     public override void Effect()
     {
         IHeal heal = collision.gameObject.GetComponent<IHeal>();
-        if (heal != null)
+        if (heal != null && !isEffected)
         {
             heal.Heal(healthPoint);
             MusicMgr.GetInstance().PlaySound("HealthBox", false);
@@ -27,6 +29,7 @@ public class HealthBox : BaseBuff, IDestructable
 
     public override void EndEffect()
     {
+        isEffected = true;
         Destroy(gameObject);
     }
 

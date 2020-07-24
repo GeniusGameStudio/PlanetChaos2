@@ -15,10 +15,42 @@ public class GameManager : BaseManager<GameManager>
 
     public GameManager()
     {
-        Init();
+        MonoMgr.GetInstance().AddUpdateListener(Update);
     }
 
-    private void Init()
+    private void Update()
+    {
+        switch (SceneState)
+        {
+            case Enum_SceneState.Start:
+                StartSceneUpdate();
+                break;
+
+            case Enum_SceneState.MainMenu:
+
+                break;
+
+            case Enum_SceneState.Battle:
+
+                break;
+
+            default:
+                Debug.LogError("没有该场景状态!");
+                break;
+        }
+    }
+
+    private void StartSceneUpdate()
+    {
+        if (Input.anyKey)
+        {
+            ScenesMgr.GetInstance().LoadSceneAsyn("MainMenuScene", () => {
+            
+            });
+        }
+    }
+
+    public void Init()
     {
         Debug.Log("Init");
         SceneState = Enum_SceneState.Start;
@@ -33,6 +65,7 @@ public class GameManager : BaseManager<GameManager>
     {
         Debug.Log("开始场景加载完成");
         SceneState = Enum_SceneState.Start;
+        MusicMgr.GetInstance().PlayBkMusic("BGM2");
     }
 
     private void OnMainMenuSceneLoaded()
@@ -75,11 +108,6 @@ public class GameManager : BaseManager<GameManager>
     private void StartGame()
     {
         
-    }
-
-    private void Update()
-    {
-
     }
 
 }

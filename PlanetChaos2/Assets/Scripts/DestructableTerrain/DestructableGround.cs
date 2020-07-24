@@ -8,6 +8,7 @@ public class DestructableGround : MonoBehaviour, IDestructable
 	private float widthWorld, heightWorld;
 	private int widthPixel, heightPixel;
 	private Color transp;
+	private PolygonCollider2D polygonCollider2D;
 
 	private void InitSpriteDimensions()
 	{
@@ -30,6 +31,8 @@ public class DestructableGround : MonoBehaviour, IDestructable
 								  new Vector2(0.5f, 0.5f), 64f);
 		transp = new Color(1f, 1f, 1f, 0f);
 		InitSpriteDimensions();
+
+		polygonCollider2D = GetComponent<PolygonCollider2D>();
 	}
 
 	private V2int World2Pixel(float x, float y)
@@ -49,7 +52,7 @@ public class DestructableGround : MonoBehaviour, IDestructable
     {
 		V2int c = World2Pixel(cc.bounds.center.x, cc.bounds.center.y);
 
-		int r = Mathf.RoundToInt(cc.bounds.size.x * widthPixel / widthWorld);
+		int r = Mathf.RoundToInt(cc.bounds.size.x * widthPixel / widthWorld / 2f);
 
 		int x, y, px, nx, py, ny, d;
 
@@ -71,7 +74,7 @@ public class DestructableGround : MonoBehaviour, IDestructable
 			}
 		}
 		sr.sprite.texture.Apply();
-		Destroy(GetComponent<PolygonCollider2D>());
-		gameObject.AddComponent<PolygonCollider2D>();
+		Destroy(polygonCollider2D);
+		polygonCollider2D = gameObject.AddComponent<PolygonCollider2D>();
 	}
 }

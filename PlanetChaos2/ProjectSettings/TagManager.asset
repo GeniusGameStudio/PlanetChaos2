@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Effect
   - Ground
+  - Entity
   layers:
   - Default
   - TransparentFX

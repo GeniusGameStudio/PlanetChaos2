@@ -23,6 +23,10 @@ public class TestScript : MonoBehaviour
         MusicMgr.GetInstance().PlayBkMusic("BGM1");
         MusicMgr.GetInstance().ChangeBKValue(0.2f);
         MusicMgr.GetInstance().ChangeSoundValue(0.2f);
+
+        UIManager.GetInstance().ShowPanel<BasePanel>("TestPanel", E_UI_Layer.System, (panel)=> {
+            panel.transform.localPosition = new Vector3(-960, -540, 0);
+        });
     }
 
     // Update is called once per frame
