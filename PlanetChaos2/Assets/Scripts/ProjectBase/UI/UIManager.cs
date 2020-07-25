@@ -110,9 +110,9 @@ public class UIManager : BaseManager<UIManager>
                     break;
             }
             //设置父对象  设置相对位置和大小
-            obj.transform.SetParent(father);
+            obj.transform.SetParent(father, false);
 
-            obj.transform.localPosition = Vector3.zero;
+            //obj.transform.localPosition = Vector3.zero;
             obj.transform.localScale = Vector3.one;
 
             //(obj.transform as RectTransform).offsetMax = Vector2.zero;
@@ -139,9 +139,10 @@ public class UIManager : BaseManager<UIManager>
     {
         if(panelDic.ContainsKey(panelName))
         {
-            panelDic[panelName].HideMe();
-            GameObject.Destroy(panelDic[panelName].gameObject);
-            panelDic.Remove(panelName);
+            panelDic[panelName].HideMe(()=> {
+                GameObject.Destroy(panelDic[panelName].gameObject);
+                panelDic.Remove(panelName);
+            });
         }
     }
 

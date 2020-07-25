@@ -92,6 +92,17 @@ public class MusicMgr : BaseManager<MusicMgr>
     }
 
     /// <summary>
+    /// 获得背景音乐 音量大小
+    /// </summary>
+    /// <returns></returns>
+    public float GetBKValue()
+    {
+        return bkValue;
+    }
+
+    
+
+    /// <summary>
     /// 播放音效
     /// </summary>
     public void PlaySound(string name, bool isLoop, UnityAction<AudioSource> callBack = null)
@@ -100,6 +111,7 @@ public class MusicMgr : BaseManager<MusicMgr>
         {
             soundObj = new GameObject();
             soundObj.name = "Sound";
+            MonoMgr.GetInstance().DontDestroyOnLoad(soundObj);
         }
         //当音效资源异步加载结束后 再添加一个音效
         ResMgr.GetInstance().LoadAsync<AudioClip>("Music/Sound/" + name, (clip) =>
@@ -124,6 +136,15 @@ public class MusicMgr : BaseManager<MusicMgr>
         soundValue = value;
         for (int i = 0; i < soundList.Count; ++i)
             soundList[i].volume = value;
+    }
+
+    /// <summary>
+    /// 得到音效声音大小
+    /// </summary>
+    /// <returns></returns>
+    public float GetSoundValue()
+    {
+        return soundValue;
     }
 
     /// <summary>

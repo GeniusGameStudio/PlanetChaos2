@@ -45,7 +45,7 @@ public class GameManager : BaseManager<GameManager>
         if (Input.anyKey)
         {
             ScenesMgr.GetInstance().LoadSceneAsyn("MainMenuScene", () => {
-            
+                EventCenter.GetInstance().EventTrigger<Enum_SceneState>("场景切换", Enum_SceneState.MainMenu);
             });
         }
     }
@@ -66,12 +66,16 @@ public class GameManager : BaseManager<GameManager>
         Debug.Log("开始场景加载完成");
         SceneState = Enum_SceneState.Start;
         MusicMgr.GetInstance().PlayBkMusic("BGM2");
+        
     }
 
     private void OnMainMenuSceneLoaded()
     {
         Debug.Log("主菜单场景加载完成");
         SceneState = Enum_SceneState.MainMenu;
+        UIManager.GetInstance().ShowPanel<MainMenuPanel>("MainMenu/MainMenuPanel");
+        UIManager.GetInstance().ShowPanel<BasePanel>("MainMenu/CopyrightPanel", E_UI_Layer.Bot);
+        UIManager.GetInstance().ShowPanel<SettingPanel>("MainMenu/SettingPanel");
     }
 
     private void OnBattleSceneLoaded()

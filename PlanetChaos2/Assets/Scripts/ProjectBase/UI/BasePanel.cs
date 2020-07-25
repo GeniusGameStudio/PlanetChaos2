@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -15,7 +17,6 @@ public class BasePanel : MonoBehaviour
     //通过里式转换原则 来存储所有的控件
     private Dictionary<string, List<UIBehaviour>> controlDic = new Dictionary<string, List<UIBehaviour>>();
 
-	// Use this for initialization
 	protected virtual void Awake () {
         FindChildrenControl<Button>();
         FindChildrenControl<Image>();
@@ -31,25 +32,31 @@ public class BasePanel : MonoBehaviour
     /// </summary>
     public virtual void ShowMe()
     {
-        
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1, 0.5f);
     }
 
     /// <summary>
     /// 隐藏自己
     /// </summary>
-    public virtual void HideMe()
+    public virtual void HideMe(UnityAction callBack)
     {
-
+        transform.DOScale(0, 0.5f).OnComplete(()=> { callBack(); });
     }
 
     protected virtual void OnClick(string btnName)
     {
-
+        Debug.Log("你按下了" + btnName);
     }
 
-    protected virtual void OnValueChanged(string toggleName, bool value)
+    protected virtual void OnValueChanged(string objName, bool value)
     {
+        Debug.Log(objName + "的值改变为：" + value);
+    }
 
+    protected virtual void OnValueChanged(string objName, float value)
+    {
+        Debug.Log(objName + "的值改变为：" + value);
     }
 
     /// <summary>
@@ -99,6 +106,13 @@ public class BasePanel : MonoBehaviour
             {
                 (controls[i] as Toggle).onValueChanged.AddListener((value) =>
                 {
+                    OnValueChanged(objName, value);
+                });
+            }
+            //如果是滑动条
+            else if(controls[i] is Slider)
+            {
+                (controls[i] as Slider).onValueChanged.AddListener((value) => {
                     OnValueChanged(objName, value);
                 });
             }
