@@ -147,6 +147,19 @@ public class UIManager : BaseManager<UIManager>
     }
 
     /// <summary>
+    /// 隐藏所有面板
+    /// </summary>
+    public void HideAllPanel(UnityAction callBack)
+    {
+        foreach(var panel in panelDic)
+        {
+            GameObject.Destroy(panelDic[panel.Key].gameObject);
+        }
+        panelDic.Clear();
+        callBack();
+    }
+
+    /// <summary>
     /// 得到某一个已经显示的面板 方便外部使用
     /// </summary>
     public T GetPanel<T>(string name) where T:BasePanel

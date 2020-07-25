@@ -44,10 +44,13 @@ public class GameManager : BaseManager<GameManager>
     {
         if (Input.anyKey)
         {
-            ScenesMgr.GetInstance().LoadSceneAsyn("MainMenuScene", () => {
-                EventCenter.GetInstance().EventTrigger<Enum_SceneState>("场景切换", Enum_SceneState.MainMenu);
-            });
+            EventCenter.GetInstance().EventTrigger<Enum_SceneState>("场景切换", Enum_SceneState.MainMenu);
         }
+    }
+
+    public void LoadScene(string sceneName)
+    {
+
     }
 
     public void Init()
@@ -82,6 +85,7 @@ public class GameManager : BaseManager<GameManager>
     {
         Debug.Log("战斗场景加载完成");
         SceneState = Enum_SceneState.Battle;
+        MusicMgr.GetInstance().PlayBkMusic("BGM1");
     }
 
     private void OnSceneStateChanged(Enum_SceneState sceneState)

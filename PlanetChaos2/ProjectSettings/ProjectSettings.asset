@@ -15,7 +15,7 @@ PlayerSettings:
   companyName: GeniusGameStudio
   productName: PlanetChaos2
   defaultCursor: {fileID: 2800000, guid: cdb6f7d710744d24aa6d82beadf3c874, type: 3}
-  cursorHotspot: {x: 0, y: 0}
+  cursorHotspot: {x: 0, y: 1}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

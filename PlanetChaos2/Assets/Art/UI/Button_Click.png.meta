@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 8635183128592300650
     second: Button_Click_1
+  - first:
+      213: -7730343168960331454
+    second: Button_Click_0
+  - first:
+      213: 8350694798241628948
+    second: Button_Click_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,10 +114,10 @@ TextureImporter:
       name: Button_Click_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 64
+        x: 16
+        y: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -119,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 388e9f027f7ff3090800000000000000
-      internalID: -8052444967932925821
+      spriteID: 241804e48dd48b490800000000000000
+      internalID: -7730343168960331454
       vertices: []
       indices: 
       edges: []
@@ -129,10 +135,10 @@ TextureImporter:
       name: Button_Click_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 64
+        x: 144
+        y: 16
+        width: 96
+        height: 32
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +146,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6ab036ed4556d770800000000000000
-      internalID: 8635183128592300650
+      spriteID: 41305e4dca0a3e370800000000000000
+      internalID: 8350694798241628948
       vertices: []
       indices: 
       edges: []
