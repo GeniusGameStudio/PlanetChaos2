@@ -8,7 +8,7 @@ public class TestScript : MonoBehaviour
     void Start()
     {
         GameManager.GetInstance().ToString();
-        InputMgr.GetInstance().StartOrEndCheck(true);
+        
 
 
 

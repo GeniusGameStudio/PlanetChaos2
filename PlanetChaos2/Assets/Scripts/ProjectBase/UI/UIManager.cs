@@ -153,7 +153,7 @@ public class UIManager : BaseManager<UIManager>
     {
         foreach(var panel in panelDic)
         {
-            GameObject.Destroy(panelDic[panel.Key].gameObject);
+            GameObject.DestroyImmediate(panelDic[panel.Key].gameObject);
         }
         panelDic.Clear();
         callBack();

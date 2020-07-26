@@ -19,6 +19,15 @@ public class ScenesMgr : BaseManager<ScenesMgr>
     /// <param name="name"></param>
     public void LoadScene(string name, UnityAction fun)
     {
+
+        //SceneManager.sceneLoaded += (scene, mode) =>
+        //{
+        //    if (scene.name == name)
+        //    {
+        //        fun();
+        //    }
+        //};
+
         //场景同步加载
         SceneManager.LoadScene(name);
         //加载完成过后 才会去执行fun

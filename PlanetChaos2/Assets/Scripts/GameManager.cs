@@ -16,6 +16,7 @@ public class GameManager : BaseManager<GameManager>
     public GameManager()
     {
         MonoMgr.GetInstance().AddUpdateListener(Update);
+        InputMgr.GetInstance().StartOrEndCheck(true);
     }
 
     private void Update()
@@ -86,6 +87,11 @@ public class GameManager : BaseManager<GameManager>
         Debug.Log("战斗场景加载完成");
         SceneState = Enum_SceneState.Battle;
         MusicMgr.GetInstance().PlayBkMusic("BGM1");
+        CharacterMgr.GetInstance().InstantiateCharacters(()=> { 
+            EquipMgr.GetInstance().Equip("火箭筒", CharacterMgr.GetInstance().characterTransforms[0]);
+            CharacterMgr.GetInstance().Control(CharacterMgr.GetInstance().characterTransforms[0]);
+
+        });
     }
 
     private void OnSceneStateChanged(Enum_SceneState sceneState)

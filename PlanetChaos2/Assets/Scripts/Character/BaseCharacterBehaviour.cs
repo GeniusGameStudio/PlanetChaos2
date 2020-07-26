@@ -6,6 +6,8 @@ using UnityEngine.UI;
 /// </summary>
 public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, IControl
 {
+    public CharacterData CharacterData { get; set; }
+
     protected Animator anim;                //动画机
 
     protected Rigidbody2D rb;               //刚体

@@ -25,6 +25,7 @@ public class BasePanel : MonoBehaviour
         FindChildrenControl<Slider>();
         FindChildrenControl<ScrollRect>();
         FindChildrenControl<InputField>();
+        FindChildrenControl<Dropdown>();
     }
 	
     /// <summary>
@@ -55,6 +56,11 @@ public class BasePanel : MonoBehaviour
     }
 
     protected virtual void OnValueChanged(string objName, float value)
+    {
+        Debug.Log(objName + "的值改变为：" + value);
+    }
+
+    protected virtual void OnValueChanged(string objName, int value)
     {
         Debug.Log(objName + "的值改变为：" + value);
     }
@@ -113,6 +119,14 @@ public class BasePanel : MonoBehaviour
             else if(controls[i] is Slider)
             {
                 (controls[i] as Slider).onValueChanged.AddListener((value) => {
+                    OnValueChanged(objName, value);
+                });
+            }
+            //如果是下拉框
+            else if(controls[i] is Dropdown)
+            {
+                (controls[i] as Dropdown).onValueChanged.AddListener((value) =>
+                {
                     OnValueChanged(objName, value);
                 });
             }
