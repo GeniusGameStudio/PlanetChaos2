@@ -4,12 +4,18 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+/// <summary>
+/// 角色（英雄）的枚举
+/// </summary>
 public enum Character
 {
     Alice = 0,
     Bobi = 1
 }
 
+/// <summary>
+/// 角色（英雄）在选择时的属性
+/// </summary>
 public class CharacterData
 {
     public CharacterData(string name, Character character, int teamID)
@@ -24,7 +30,9 @@ public class CharacterData
 
     public int TeamID { get; set; }
 }
-
+/// <summary>
+/// 角色Item面板类
+/// </summary>
 public class CharacterItemPanel : BasePanel, IPointerEnterHandler, IPointerExitHandler
 {
     private Dictionary<int, string> avatarDic = new Dictionary<int, string>();

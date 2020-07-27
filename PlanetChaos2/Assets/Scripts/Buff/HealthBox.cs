@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 回血箱类
+/// </summary>
 public class HealthBox : BaseBuff, IDestructable
 {
     [Header("回复生命点数")]

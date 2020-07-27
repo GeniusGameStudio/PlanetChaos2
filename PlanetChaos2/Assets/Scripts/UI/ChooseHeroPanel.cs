@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 选择英雄面板
+/// </summary>
 public class ChooseHeroPanel : BasePanel
 {
     private Button btnStartGame;
@@ -25,6 +28,9 @@ public class ChooseHeroPanel : BasePanel
         EventCenter.GetInstance().AddEventListener<int>("队伍选择更改", OnTeamChooseChanged);
     }
 
+    /// <summary>
+    /// 当玩家数变动时的回调
+    /// </summary>
     private void OnPlayerCountChanged()
     {
         int playerCount = scrollViewContent.childCount;
@@ -54,6 +60,10 @@ public class ChooseHeroPanel : BasePanel
         }
     }
 
+    /// <summary>
+    /// 对所有按钮按下的监听
+    /// </summary>
+    /// <param name="btnName"></param>
     protected override void OnClick(string btnName)
     {
         base.OnClick(btnName);
@@ -85,6 +95,10 @@ public class ChooseHeroPanel : BasePanel
         }
     }
 
+    /// <summary>
+    /// 当队伍选择变化时
+    /// </summary>
+    /// <param name="value"></param>
     private void OnTeamChooseChanged(int value)
     {
         if (CheckTeamMatch())
@@ -122,6 +136,9 @@ public class ChooseHeroPanel : BasePanel
         return isMatch;
     }
 
+    /// <summary>
+    /// 摧毁时，注销事件监听
+    /// </summary>
     private void OnDestroy()
     {
         EventCenter.GetInstance().RemoveEventListener("玩家数变更", OnPlayerCountChanged);

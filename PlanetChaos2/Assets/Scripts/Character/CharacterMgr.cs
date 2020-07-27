@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// 角色管理器，用于对所有角色实例进行管理
+/// </summary>
 public class CharacterMgr : BaseManager<CharacterMgr>
 {
     public List<Transform> characterTransforms = new List<Transform>();

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 火箭弹类
+/// </summary>
 public class BazookaBullet : BaseBullet
 {
 

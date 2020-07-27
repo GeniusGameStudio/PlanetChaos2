@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 回血区域类
+/// </summary>
 public class HealthZone : BaseBuff
 {
     [Header("回复生命点数")]

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 场景状态的枚举
+/// </summary>
 public enum Enum_SceneState
 {
     Start,
@@ -9,6 +12,9 @@ public enum Enum_SceneState
     Battle
 }
 
+/// <summary>
+/// 游戏管理器，主逻辑的入口
+/// </summary>
 public class GameManager : BaseManager<GameManager>
 {
     public Enum_SceneState SceneState { get; set; }

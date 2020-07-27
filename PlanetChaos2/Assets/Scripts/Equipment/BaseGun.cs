@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 枪械武器抽象类
+/// </summary>
 public abstract class BaseGun : BaseEquipment, IShootBullet
 {
     [Header("子弹的预制体")]

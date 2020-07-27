@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 音频管理器面板
+/// </summary>
 public class AudioManagerPanel : BasePanel
 {
     private Slider bgmSlider;

@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 闪烁文字类
+/// </summary>
 public class BlinkText : MonoBehaviour
 {
     Text text;

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 角色瞄准时的UI
+/// </summary>
 public class AimUI : MonoBehaviour
 {
     private float maxShootTime;

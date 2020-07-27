@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 角色控制器基类，重载了角色行为基类中的虚方法，实现了接口
+/// </summary>
 public class BaseCharacterController : BaseCharacterBehaviour
 {
     protected float horizontalInput;

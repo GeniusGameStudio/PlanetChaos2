@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 设置面板类（暂时只有音频管理）
+/// </summary>
 public class SettingPanel : BasePanel
 {
 

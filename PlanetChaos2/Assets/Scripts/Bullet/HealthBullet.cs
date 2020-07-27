@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 回血子弹类
+/// </summary>
 public class HealthBullet : BaseBullet
 {
     [Header("治愈区的预制体")]

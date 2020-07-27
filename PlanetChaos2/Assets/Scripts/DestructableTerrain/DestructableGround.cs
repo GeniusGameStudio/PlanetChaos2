@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 可被摧毁（挖坑）的地面类
+/// </summary>
 public class DestructableGround : MonoBehaviour, IDestructable
 {
 	private SpriteRenderer sr;
@@ -10,6 +13,9 @@ public class DestructableGround : MonoBehaviour, IDestructable
 	private Color transp;
 	private PolygonCollider2D polygonCollider2D;
 
+	/// <summary>
+	/// 初始化维度
+	/// </summary>
 	private void InitSpriteDimensions()
 	{
 		widthWorld = sr.bounds.size.x;
@@ -35,6 +41,12 @@ public class DestructableGround : MonoBehaviour, IDestructable
 		polygonCollider2D = GetComponent<PolygonCollider2D>();
 	}
 
+	/// <summary>
+	/// 将世界坐标转为像素值
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	/// <returns></returns>
 	private V2int World2Pixel(float x, float y)
 	{
 		V2int v = new V2int();
@@ -48,6 +60,10 @@ public class DestructableGround : MonoBehaviour, IDestructable
 		return v;
 	}
 
+	/// <summary>
+	/// 在cc范围内被挖坑
+	/// </summary>
+	/// <param name="cc"></param>
 	public void Destruct(CircleCollider2D cc)
     {
 		V2int c = World2Pixel(cc.bounds.center.x, cc.bounds.center.y);

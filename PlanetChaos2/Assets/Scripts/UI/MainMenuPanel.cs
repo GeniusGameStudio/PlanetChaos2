@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 主菜单面板类
+/// </summary>
 public class MainMenuPanel : BasePanel
 {
     protected override void OnClick(string btnName)

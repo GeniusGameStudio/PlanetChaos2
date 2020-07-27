@@ -418,6 +418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c44dbf8e36e9a4499e80accebbcc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerTransforms:
+  - {fileID: 1787290153}
+  - {fileID: 519501842}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -495,6 +498,12 @@ MonoBehaviour:
   m_CropFrameX: 0
   m_CropFrameY: 0
   m_StretchFill: 0
+--- !u!4 &519501842 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1751763138295747694, guid: af40d13836f477a4cac5dcda1e039f03,
+    type: 3}
+  m_PrefabInstance: {fileID: 1751763138575234413}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &686236533
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +723,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c42b0189989fb945a754c98f827374b, type: 3}
+--- !u!4 &1787290153 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3507329289765688134, guid: 1588ab7d1ee5f7e46a817063a3ca21c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3507329290951163423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1751763138575234413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -786,6 +801,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 4198982647048409592, guid: af40d13836f477a4cac5dcda1e039f03,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af40d13836f477a4cac5dcda1e039f03, type: 3}
 --- !u!1001 &3507329290951163423
@@ -795,6 +815,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 988228063, guid: 1588ab7d1ee5f7e46a817063a3ca21c0, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1766272244, guid: 1588ab7d1ee5f7e46a817063a3ca21c0, type: 3}
       propertyPath: m_Camera
       value: 

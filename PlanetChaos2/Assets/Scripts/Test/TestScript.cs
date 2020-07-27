@@ -2,20 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 测试API的脚本
+/// </summary>
 public class TestScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public Transform[] playerTransforms;
     void Start()
     {
         GameManager.GetInstance().ToString();
         
+        foreach(var playerTransform in playerTransforms)
+        {
+            CharacterMgr.GetInstance().characterTransforms.Add(playerTransform);
+        }
 
-
-
-        EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);  //给Alice装备火箭筒
+        //EquipMgr.GetInstance().Equip("火箭筒", GameObject.Find("Alice").transform);  //给Alice装备火箭筒
         //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);        //给Alice卸下当前装备
 
-        CharacterMgr.GetInstance().Control(GameObject.Find("Alice").transform);     //控制Alice!
+        //CharacterMgr.GetInstance().Control(GameObject.Find("Alice").transform);     //控制Alice!
 
         //EquipMgr.GetInstance().Equip("回血枪", GameObject.Find("Alice").transform);//给Alice装备回血枪
         //EquipMgr.GetInstance().Unload(GameObject.Find("Alice").transform);    //给Alice卸下当前装备
@@ -27,6 +32,8 @@ public class TestScript : MonoBehaviour
         UIManager.GetInstance().ShowPanel<BasePanel>("TestPanel", E_UI_Layer.System, (panel)=> {
             panel.transform.localPosition = new Vector3(-960, -540, 0);
         });
+
+        TurnBaseMgr.GetInstance().Start();
     }
 
     // Update is called once per frame

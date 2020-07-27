@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 特效基类
+/// </summary>
 public abstract class BaseFX : MonoBehaviour, IDisappear
 {
     protected SpriteRenderer sprite;

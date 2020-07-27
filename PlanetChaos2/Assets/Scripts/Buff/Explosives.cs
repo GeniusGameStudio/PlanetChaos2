@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 爆炸物类
+/// </summary>
 public class Explosives : BaseBuff, IDestructable
 { 
     public void Destruct(CircleCollider2D coll)

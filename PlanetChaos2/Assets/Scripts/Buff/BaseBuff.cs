@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Buff的基类
+/// </summary>
 public abstract class BaseBuff : MonoBehaviour, IEffect
 {
     [Header("受Buff影响的层")]

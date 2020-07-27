@@ -12,7 +12,7 @@ using UnityEngine.Events;
 public class MonoMgr : BaseManager<MonoMgr>
 {
     private MonoController controller;
-
+    public MonoController Controller { get { return controller; }}
     public MonoMgr()
     {
         //保证了MonoController对象的唯一性
@@ -51,6 +51,16 @@ public class MonoMgr : BaseManager<MonoMgr>
     public Coroutine StartCoroutine(string methodName)
     {
         return controller.StartCoroutine(methodName);
+    }
+
+    public void StopCoroutine(Coroutine routine)
+    {
+        controller.StopCoroutine(routine);
+    }
+
+    public void StopCoroutine(IEnumerator iEnumerator)
+    {
+        controller.StopCoroutine(iEnumerator);
     }
 
     public void DontDestroyOnLoad(Object obj)

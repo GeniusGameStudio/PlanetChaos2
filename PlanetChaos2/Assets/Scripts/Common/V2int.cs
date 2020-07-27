@@ -2,7 +2,9 @@ using System;
 using UnityEngine;
 using System.Collections;
 
-
+/// <summary>
+/// x,y都是int类型的自定义Vector2类型
+/// </summary>
 public class V2int{
 
 	private int xIP, yIP;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 装备管理器
+/// </summary>
 public class EquipMgr : BaseManager<EquipMgr>
 {
     /// <summary>

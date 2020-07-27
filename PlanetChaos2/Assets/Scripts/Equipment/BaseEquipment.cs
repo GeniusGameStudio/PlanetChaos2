@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 装备基类
+/// </summary>
 public class BaseEquipment : MonoBehaviour, IEquipment
 {
     //装备名称

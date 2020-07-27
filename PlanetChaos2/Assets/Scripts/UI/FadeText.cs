@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// 逐渐消失并上升的文字效果类
+/// </summary>
 public class FadeText : MonoBehaviour
 {
     private Text fadeText;

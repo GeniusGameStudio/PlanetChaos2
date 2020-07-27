@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// 爆炸特效类
+/// </summary>
 public class BoomFX : BaseFX
 {
     [Header("爆炸造成的最大伤害")]
