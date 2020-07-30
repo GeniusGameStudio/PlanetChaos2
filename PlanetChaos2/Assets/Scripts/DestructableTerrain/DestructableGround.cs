@@ -28,7 +28,7 @@ public class DestructableGround : MonoBehaviour, IDestructable
 	{
 		sr = GetComponent<SpriteRenderer>();
 
-		Texture2D tex = (Texture2D)Resources.Load("Terrain/TestForeground1");
+		Texture2D tex = (Texture2D)Resources.Load("Terrain/" + gameObject.name);
 
 		Texture2D tex_clone = Instantiate(tex);
 

@@ -34,7 +34,7 @@ public class BasePanel : MonoBehaviour
     public virtual void ShowMe()
     {
         transform.localScale = Vector3.zero;
-        transform.DOScale(1, 0.5f);
+        transform.DOScale(1, 0.5f).SetUpdate(true);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public class BasePanel : MonoBehaviour
     /// </summary>
     public virtual void HideMe(UnityAction callBack)
     {
-        transform.DOScale(0, 0.5f).OnComplete(()=> { callBack(); });
+        transform.DOScale(0, 0.5f).SetUpdate(true).OnComplete(()=> { callBack(); });
     }
 
     protected virtual void OnClick(string btnName)
@@ -61,6 +61,11 @@ public class BasePanel : MonoBehaviour
     }
 
     protected virtual void OnValueChanged(string objName, int value)
+    {
+        Debug.Log(objName + "的值改变为：" + value);
+    }
+
+    protected virtual void OnValueChanged(string objName, string value)
     {
         Debug.Log(objName + "的值改变为：" + value);
     }
@@ -127,6 +132,13 @@ public class BasePanel : MonoBehaviour
             {
                 (controls[i] as Dropdown).onValueChanged.AddListener((value) =>
                 {
+                    OnValueChanged(objName, value);
+                });
+            }
+            //如果是输入框
+            else if(controls[i] is InputField)
+            {
+                (controls[i] as InputField).onValueChanged.AddListener((value) => {
                     OnValueChanged(objName, value);
                 });
             }

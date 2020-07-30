@@ -60,7 +60,7 @@ public class CharacterItemPanel : BasePanel, IPointerEnterHandler, IPointerExitH
         base.Awake();
         
         playerNameText = GetControl<Text>("PlayerNameText");
-
+        playerNameText.text = "Default";
         heroAvatarImage = GetControl<Image>("AvatarImage");
 
         heroDropdown = GetControl<Dropdown>("HeroDropdown");
@@ -92,6 +92,17 @@ public class CharacterItemPanel : BasePanel, IPointerEnterHandler, IPointerExitH
             case "TeamDropdown":
                 CharacterData.TeamID = value;
                 EventCenter.GetInstance().EventTrigger<int>("队伍选择更改", value);
+                break;
+        }
+    }
+
+    protected override void OnValueChanged(string objName, string value)
+    {
+        base.OnValueChanged(objName, value);
+        switch (objName)
+        {
+            case "PlayerNameInput":
+                CharacterData.Name = value;
                 break;
         }
     }

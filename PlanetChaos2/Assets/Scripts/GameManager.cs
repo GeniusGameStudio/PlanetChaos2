@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 场景状态的枚举
@@ -12,6 +13,19 @@ public enum Enum_SceneState
     Battle
 }
 
+public class SceneStateData
+{
+    public Enum_SceneState state;
+
+    public UnityAction callBack;
+
+    public SceneStateData(Enum_SceneState state, UnityAction callBack = null)
+    {
+        this.state = state;
+        this.callBack = callBack;
+    }
+}
+
 /// <summary>
 /// 游戏管理器，主逻辑的入口
 /// </summary>
@@ -19,10 +33,82 @@ public class GameManager : BaseManager<GameManager>
 {
     public Enum_SceneState SceneState { get; set; }
 
+    public bool IsShowLeftMenu { get; set; }
+
+    public bool IsGamePaused { get; set; }
+
+    public bool IsShowItemPanel { get; set; }
+
+    public bool IsChooseItem { get; set; }
+
+    public bool IsUsedItem { get; set; }
+
     public GameManager()
     {
         MonoMgr.GetInstance().AddUpdateListener(Update);
         InputMgr.GetInstance().StartOrEndCheck(true);
+        EventCenter.GetInstance().AddEventListener<KeyCode>("某键按下", OnKeyDown);
+        EventCenter.GetInstance().AddEventListener("回合数变更", OnTurnChanged);
+        EventCenter.GetInstance().AddEventListener<BaseCharacterController>("玩家死亡", OnPlayerDead);
+    }
+
+    private void OnPlayerDead(BaseCharacterController baseCharacterController)
+    {
+        CheckWin();
+    }
+
+    private void OnTurnChanged()
+    {
+        CheckWin();
+        IsUsedItem = false;
+    }
+
+    private void OnKeyDown(KeyCode keyCode)
+    {
+        switch (keyCode)
+        {
+            case KeyCode.Escape:
+                if(SceneState == Enum_SceneState.Battle)
+                {
+                    if (!IsShowLeftMenu)
+                    {
+                        Time.timeScale = 0;
+                        UIManager.GetInstance().ShowPanel<LeftMenuPanel>("Battle/LeftMenuPanel");
+                        IsShowLeftMenu = true;
+                        IsGamePaused = true;
+                    }
+                    else
+                    {
+                        Time.timeScale = 1;
+                        UIManager.GetInstance().HidePanel("Battle/LeftMenuPanel");
+                        IsShowLeftMenu = false;
+                        IsGamePaused = false;
+                    }
+                }
+                break;
+
+            case KeyCode.B:
+                if(SceneState == Enum_SceneState.Battle)
+                {
+                    if (!IsGamePaused && !IsUsedItem)
+                    {
+                        if (!IsShowItemPanel)
+                        {
+                            UIManager.GetInstance().ShowPanel<ItemPanel>("Battle/ItemPanel");
+                            IsChooseItem = true;
+                            IsShowItemPanel = true;
+                            Cursor.visible = true;
+                        }
+                        else
+                        {
+                            UIManager.GetInstance().HidePanel("Battle/ItemPanel");
+                            IsChooseItem = false;
+                            IsShowItemPanel = false;
+                        }
+                    }
+                }
+                break;
+        }
     }
 
     private void Update()
@@ -51,13 +137,16 @@ public class GameManager : BaseManager<GameManager>
     {
         if (Input.anyKey)
         {
-            EventCenter.GetInstance().EventTrigger<Enum_SceneState>("场景切换", Enum_SceneState.MainMenu);
+            EventCenter.GetInstance().EventTrigger<SceneStateData>("场景切换", new SceneStateData(Enum_SceneState.MainMenu));
         }
     }
 
-    public void LoadScene(string sceneName)
+    public void Restart()
     {
-
+        CharacterMgr.GetInstance().characterTransforms.Clear();
+        IsShowLeftMenu = false;
+        IsShowItemPanel = false;
+        IsGamePaused = false;
     }
 
     public void Init()
@@ -66,7 +155,8 @@ public class GameManager : BaseManager<GameManager>
         SceneState = Enum_SceneState.Start;
         MonoMgr.GetInstance().AddUpdateListener(Update);
 
-        EventCenter.GetInstance().AddEventListener<Enum_SceneState>("场景切换",OnSceneStateChanged);
+        EventCenter.GetInstance().AddEventListener<SceneStateData>("场景切换", OnSceneStateChanged);
+
 
         OnStartSceneLoaded();
     }
@@ -76,7 +166,7 @@ public class GameManager : BaseManager<GameManager>
         Debug.Log("开始场景加载完成");
         SceneState = Enum_SceneState.Start;
         MusicMgr.GetInstance().PlayBkMusic("BGM2");
-        
+  
     }
 
     private void OnMainMenuSceneLoaded()
@@ -93,30 +183,61 @@ public class GameManager : BaseManager<GameManager>
         Debug.Log("战斗场景加载完成");
         SceneState = Enum_SceneState.Battle;
         MusicMgr.GetInstance().PlayBkMusic("BGM1");
-        CharacterMgr.GetInstance().InstantiateCharacters(()=> { 
-            EquipMgr.GetInstance().Equip("火箭筒", CharacterMgr.GetInstance().characterTransforms[0]);
-            CharacterMgr.GetInstance().Control(CharacterMgr.GetInstance().characterTransforms[0]);
-
-        });
+        Timer.Invoke(() => {
+            GameObject characterInitPoints = GameObject.Find("CharacterInitPoints");
+            List<int> pointIndexs = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+            List<int> randomPointIndexs = Shuffle<int>(pointIndexs);
+            CharacterMgr.GetInstance().InstantiateCharacters(characterInitPoints, randomPointIndexs, () => {
+                UIManager.GetInstance().ShowPanel<TimerPanel>("Battle/TimerPanel", E_UI_Layer.Top);
+                TurnBaseMgr.GetInstance().Start();
+            });
+        }, 0.2f);
     }
 
-    private void OnSceneStateChanged(Enum_SceneState sceneState)
+    /// <summary>
+    /// 随机打乱list元素
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="original"></param>
+    /// <returns></returns>
+    public List<T> Shuffle<T>(List<T> original)
     {
-        if (sceneState == SceneState)
+        System.Random randomNum = new System.Random();
+        int index = 0;
+        T temp;
+        for (int i = 0; i < original.Count; i++)
+        {
+            index = randomNum.Next(0, original.Count - 1);
+            if (index != i)
+            {
+                temp = original[i];
+                original[i] = original[index];
+                original[index] = temp;
+            }
+        }
+        return original;
+    }
+
+    private void OnSceneStateChanged(SceneStateData data)
+    {
+        if (data.state == SceneState)
             return;
 
-        switch (sceneState)
+        switch (data.state)
         {
             case Enum_SceneState.Start:
-                ScenesMgr.GetInstance().LoadScene("StartScene", OnStartSceneLoaded);
+                data.callBack += OnStartSceneLoaded;
+                ScenesMgr.GetInstance().LoadScene("StartScene", data.callBack);
                 break;
 
             case Enum_SceneState.MainMenu:
-                ScenesMgr.GetInstance().LoadScene("MainMenuScene", OnMainMenuSceneLoaded);
+                data.callBack += OnMainMenuSceneLoaded;
+                ScenesMgr.GetInstance().LoadScene("MainMenuScene", data.callBack);
                 break;
 
             case Enum_SceneState.Battle:
-                ScenesMgr.GetInstance().LoadScene("BattleScene", OnBattleSceneLoaded);
+                data.callBack += OnBattleSceneLoaded;
+                ScenesMgr.GetInstance().LoadScene("BattleScene", data.callBack);
                 break;
 
             default:
@@ -125,9 +246,32 @@ public class GameManager : BaseManager<GameManager>
         }
     }
 
-    private void StartGame()
+    private void CheckWin()
     {
-        
+        Dictionary<int, int> aliveDic = new Dictionary<int, int>();
+        int teamID = -1;
+        foreach(var character in CharacterMgr.GetInstance().characterTransforms)
+        {
+            BaseCharacterController baseCharacterController = character.GetComponent<BaseCharacterController>();
+            if (baseCharacterController.isAlive)
+            {
+                if (!aliveDic.ContainsKey(baseCharacterController.CharacterData.TeamID))
+                {
+                    teamID = baseCharacterController.CharacterData.TeamID;
+                    aliveDic.Add(teamID, 0);
+                }
+            }
+        }
+        if(aliveDic.Keys.Count == 1)
+        {
+            Debug.Log("队伍" + teamID + "Win");
+            //Time.timeScale = 0;
+            IsGamePaused = true;
+            TurnBaseMgr.GetInstance().IsPauseTimer = true;
+            UIManager.GetInstance().ShowPanel<WinPanel>("Battle/WinPanel", E_UI_Layer.System, (panel) => {
+                panel.SetWinText("队伍" + (teamID + 1).ToString() + "获胜！");
+            });
+        }
     }
 
 }

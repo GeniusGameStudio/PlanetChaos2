@@ -48,6 +48,8 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     /// <param name="key"></param>
     protected void OnKeyDown(KeyCode key)
     {
+        if (GameManager.GetInstance().IsGamePaused || GameManager.GetInstance().IsChooseItem)
+            return;
         if(key == KeyCode.Mouse0)
         {
             keyDownTimestamp = Time.time;
@@ -56,11 +58,12 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
             MusicMgr.GetInstance().PlaySound("Storage",false, (source) => {
                 storageSound = source;
             });
+            TurnBaseMgr.GetInstance().IsPauseTimer = true;
         }
         else if(key == KeyCode.Mouse1)
         {
             CancelShootBullet();
-            
+            TurnBaseMgr.GetInstance().IsPauseTimer = false;
         }
     }
 
@@ -70,6 +73,8 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     /// <param name="key"></param>
     protected void OnKeyUp(KeyCode key)
     {
+        if (GameManager.GetInstance().IsGamePaused || GameManager.GetInstance().IsChooseItem)
+            return;
         if (key == KeyCode.Mouse0 && isShooting)
         {
             keyUpTimestamp = Time.time;
@@ -77,6 +82,7 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
             float currentShootPower = shootPower * shootTime;
             ShootBullet(shootTransform, currentShootPower);
             isShooting = false;
+            
         }
     }
 
@@ -128,10 +134,14 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
         IShoot shoot = bulletObj.GetComponent<IShoot>();
         shoot.Shoot(shootDirection, shootPower);
         Debug.Log(bulletObj.name + "被" + gameObject.name + "发射出去了! 发射方向：" + shootDirection);
+
+        EquipMgr.GetInstance().Unload(TurnBaseMgr.GetInstance().CurrentPlayer());
     }
 
     private void Update()
     {
+        if (GameManager.GetInstance().IsGamePaused || GameManager.GetInstance().IsChooseItem)
+            return;
         AimMouse();
         CheckShootTime();
     }

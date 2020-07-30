@@ -14,15 +14,26 @@ public class CharacterMgr : BaseManager<CharacterMgr>
 
     private Dictionary<Character, string> characterResDic = new Dictionary<Character, string>();
 
+    private List<Color> teamColors = new List<Color>();
+
     private void InitCharacterResDic()
     {
         characterResDic.Add(Character.Alice, "Objects/Alice");
         characterResDic.Add(Character.Bobi, "Objects/Bobi");
     }
 
+    private void InitTeamColors()
+    {
+        teamColors.Add(new Color(98f/255f, 98f/255f, 1f));
+        teamColors.Add(new Color(1f, 98f/255f, 98/255f));
+        teamColors.Add(new Color(1f, 1f, 98/255f));
+        teamColors.Add(new Color(98f/255f, 1f, 98/255f));
+    }
+
     public CharacterMgr()
     {
         InitCharacterResDic();
+        InitTeamColors();
     }
 
     public void SetCharacterDatas(List<CharacterData> characterDatas)
@@ -30,26 +41,32 @@ public class CharacterMgr : BaseManager<CharacterMgr>
         this.characterDatas = characterDatas;
     }
 
-    private void InstantiateCharacter(CharacterData data, UnityAction<GameObject> callBack)
+    private void InstantiateCharacter(CharacterData data, Transform position, UnityAction<GameObject> callBack)
     {
         if (characterResDic.ContainsKey(data.Character))
         {
             ResMgr.GetInstance().LoadAsync<GameObject>(characterResDic[data.Character], (obj) => {
+                obj.transform.position = position.position;
                 obj.GetComponent<BaseCharacterController>().CharacterData = data;
+                CharacterUI characterUI = obj.GetComponent<CharacterUI>();
+                characterUI.SetPlayerName(data.Name);
+                characterUI.SetColor(teamColors[data.TeamID]);
                 characterTransforms.Add(obj.transform);
                 callBack(obj);
             });
         }
     }
 
-    public void InstantiateCharacters(UnityAction callBack)
+    public void InstantiateCharacters(GameObject initPointObj, List<int> initPoints, UnityAction callBack)
     {
         int instantiatedCount = 0;
+        int positionIndex = 0;
         if(characterDatas != null)
         {
             foreach(var data in characterDatas)
             {
-                InstantiateCharacter(data, (obj) => {
+                Transform position = initPointObj.transform.GetChild(initPoints[positionIndex++]);
+                InstantiateCharacter(data, position, (obj) => {
                     instantiatedCount++;
                     if (instantiatedCount == characterDatas.Count)
                     {

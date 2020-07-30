@@ -11,6 +11,8 @@ public abstract class BaseBullet : MonoBehaviour, IShoot, IDisappear
 
     public void Disappear()
     {
+        TurnBaseMgr.GetInstance().RemainingTime = 6;
+        TurnBaseMgr.GetInstance().IsPauseTimer = false;
         Destroy(gameObject);
     }
 
@@ -45,9 +47,19 @@ public abstract class BaseBullet : MonoBehaviour, IShoot, IDisappear
         UpdateAngle();
     }
 
+    protected void CheckBorder()
+    {
+        if(transform.position.y < -5f || transform.position.x < -10f || transform.position.x > 10f)
+        {
+            
+            Disappear();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
         UpdateAngle();
+        CheckBorder();
     }
 }

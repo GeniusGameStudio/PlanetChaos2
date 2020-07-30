@@ -28,6 +28,11 @@ public class BaseEquipment : MonoBehaviour, IEquipment
         this.equipName = equipName;
     }
 
+    public string GetEquipName()
+    {
+        return equipName;
+    }
+
     /// <summary>
     /// 装备朝向鼠标
     /// </summary>
@@ -84,7 +89,7 @@ public class BaseEquipment : MonoBehaviour, IEquipment
         if (!CheckIfEquiped(player))
         {
             Debug.Log(equipName + "，装备在了" + player.gameObject.name + "身上");
-            transform.SetParent(player);
+            transform.SetParent(player, false);
             isEquipedSelf = true;
         }
         else

@@ -18,9 +18,11 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, ICon
 
     protected SpriteRenderer sprite;        //精灵渲染器
 
-    protected bool isAlive = true;          //是否存活
+    public bool isAlive = true;             //是否存活
 
     public bool IsControlling = false;      //是否正在被控制
+
+    protected bool dropHurt = false;        //下次触碰地面是否受伤
 
     [Header("最大生命值")]
     public int maxHP = 100;                 //最大生命值，默认100
@@ -86,6 +88,11 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, ICon
     /// 死亡
     /// </summary>
     protected virtual void Die() { }
+
+    /// <summary>
+    /// 跌落受伤
+    /// </summary>
+    protected virtual void DropHurt() { }
 
     /// <summary>
     /// 被治愈

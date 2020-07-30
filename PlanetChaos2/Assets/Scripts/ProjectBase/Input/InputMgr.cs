@@ -53,6 +53,8 @@ public class InputMgr : BaseManager<InputMgr>
         CheckKeyCode(KeyCode.D);
         CheckKeyCode(KeyCode.Mouse0);
         CheckKeyCode(KeyCode.Mouse1);
+        CheckKeyCode(KeyCode.Escape);
+        CheckKeyCode(KeyCode.B);
     }
 	
 }

@@ -28,6 +28,14 @@ public class BaseCharacterController : BaseCharacterBehaviour
         }
     }
 
+
+    protected void CheckBorder()
+    {
+        if(transform.position.y < -5f || transform.position.x < -8f || transform.position.x > 8f)
+        {
+            Die();
+        }
+    }
     
 
     protected void Update()
@@ -36,17 +44,23 @@ public class BaseCharacterController : BaseCharacterBehaviour
         {
             isOnGround = OnGround();
             ProcessInput();
-            SwitchAnim();
+            CheckBorder();
         }
+        SwitchAnim();
     }
 
     protected void FixedUpdate()
     {
-        if (isAlive && IsControlling)
+        if (isAlive)
         {
-            Move();
-            Jump();
+            if (IsControlling)
+            {
+                Move();
+                Jump();
+            }
+            DropHurt();
         }
+        
     }
 
     protected void ProcessInput()
@@ -68,6 +82,11 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
         anim.SetBool("isJump", isJump);
 
+        if (!IsControlling)
+        {
+            anim.SetBool("isWalk", false);
+            anim.SetBool("isJump", false);
+        }
     }
 
     /// <summary>
@@ -127,7 +146,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
         currentHP += increaseHP;
         Debug.Log("增加血量:" + increaseHP);
-
+        EventCenter.GetInstance().EventTrigger("血量变化", this);
         //有回复量的情况下，显示回血字体，并向上飘动，逐渐消失
         if (increaseHP > 0)
         {
@@ -162,7 +181,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
         currentHP -= decreaseHP;
         Debug.Log("减少血量:" + decreaseHP);
-
+        EventCenter.GetInstance().EventTrigger("血量变化", this);
         //有掉血量的情况下，显示掉血血字体，并向上飘动，逐渐消失
         if (decreaseHP > 0)
         {
@@ -202,6 +221,19 @@ public class BaseCharacterController : BaseCharacterBehaviour
         isAlive = false;
         EquipMgr.GetInstance().Unload(transform);
         EventCenter.GetInstance().EventTrigger<BaseCharacterController>("玩家死亡", this);  //广播自己死亡的消息
+    }
+
+    protected override void DropHurt()
+    {
+        if(rb.velocity.y < -10f)
+        {
+            dropHurt = true;
+        }
+        if(isOnGround && dropHurt)
+        {
+            DoHurt(Mathf.RoundToInt(Mathf.Abs(rb.velocity.y)));
+            dropHurt = false;
+        }
     }
 
     protected void OnDestroy()

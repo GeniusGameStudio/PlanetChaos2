@@ -15,6 +15,8 @@ public class HealthBullet : BaseBullet
         if (collision.CompareTag("Ground"))
         {
             GameObject healthZoneObj = Instantiate(healthZonePrefab, transform.position, Quaternion.identity);
+            TurnBaseMgr.GetInstance().RemainingTime = 6;
+            TurnBaseMgr.GetInstance().IsPauseTimer = false;
             Destroy(gameObject);
         }
     }

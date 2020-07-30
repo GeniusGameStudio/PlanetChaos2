@@ -50,7 +50,7 @@ public class ChooseHeroPanel : BasePanel
         {
             btnStartGame.interactable = false;
         }
-        if(playerCount >= 6)
+        if(playerCount >= 8)
         {
             btnAddPlayer.interactable = false;
         }
@@ -83,8 +83,10 @@ public class ChooseHeroPanel : BasePanel
                     characterDatas.Add(item.CharacterData);
                 }
                 CharacterMgr.GetInstance().SetCharacterDatas(characterDatas);
-                UIManager.GetInstance().HideAllPanel(()=> { 
-                    EventCenter.GetInstance().EventTrigger<Enum_SceneState>("场景切换", Enum_SceneState.Battle);
+                UIManager.GetInstance().HideAllPanel(()=> {
+                    EventCenter.GetInstance().EventTrigger<SceneStateData>("场景切换", new SceneStateData(Enum_SceneState.Battle, ()=> {
+                        GameManager.GetInstance().Restart();
+                    }));
                 });
                 break;
 

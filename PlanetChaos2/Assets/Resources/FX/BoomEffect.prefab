@@ -118,10 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamage: 50
-  maxForce: 2
-  layer:
-    serializedVersion: 2
-    m_Bits: 768
+  maxForce: 1
 --- !u!58 &3681092814315763008
 CircleCollider2D:
   m_ObjectHideFlags: 0

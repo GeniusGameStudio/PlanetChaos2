@@ -42,7 +42,6 @@ public class EventCenter : BaseManager<EventCenter>
     //key —— 事件的名字（比如：怪物死亡，玩家死亡，通关 等等）
     //value —— 对应的是 监听这个事件 对应的委托函数们
     private Dictionary<string, IEventInfo> eventDic = new Dictionary<string, IEventInfo>();
-
     /// <summary>
     /// 添加事件监听
     /// </summary>

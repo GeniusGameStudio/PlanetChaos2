@@ -130,7 +130,7 @@ MonoBehaviour:
     type: 3}
   shootTransform: {fileID: 3515027776288879610}
   maxShootTime: 2
-  shootPower: 5
+  shootPower: 6
   bulletSoundName: Rocket
 --- !u!1001 &6829289224910186746
 PrefabInstance:
