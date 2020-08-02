@@ -3,7 +3,7 @@ Optimized version of `Planet Chaos`.
 
 Working in progress.
 
-[LatestRelease](https://github.com/GeniusGameStudio/PlanetChaos2/releases/tag/0.1)
+[LatestRelease](https://github.com/GeniusGameStudio/PlanetChaos2/releases/tag/0.2)
 
 
 
