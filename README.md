@@ -7,6 +7,20 @@ Working in progress.
 
 
 
+## 2020.8.2 Updates
+
+- Grenade added.
+
+![Grenade_icon](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/Grenade_icon.png?raw=true)
+
+- Jetpack added.
+
+![Jetpack_icon](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/Jetpack_icon.png?raw=true)
+
+- Fixed bugs.
+
+
+
 ## 2020.7.30 Updates
 
 - UI System finished completely.
