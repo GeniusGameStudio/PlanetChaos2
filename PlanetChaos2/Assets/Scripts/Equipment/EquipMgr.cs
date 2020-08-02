@@ -23,7 +23,8 @@ public class EquipMgr : BaseManager<EquipMgr>
         equipResDic.Add("回血枪", "Objects/HealthGun");
         equipResDic.Add("火箭筒", "Objects/Bazooka");
         equipResDic.Add("火焰枪", "Objects/FireGun");
-
+        equipResDic.Add("手榴弹", "Objects/Grenade");
+        equipResDic.Add("喷射机", "Objects/Jetpack");
     }
 
     /// <summary>

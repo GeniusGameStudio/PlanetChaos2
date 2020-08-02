@@ -24,6 +24,10 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, ICon
 
     protected bool dropHurt = false;        //下次触碰地面是否受伤
 
+    protected float gravityScale;           //默认的重力尺寸
+
+    protected bool isHurt = false;          //是否受伤
+
     [Header("最大生命值")]
     public int maxHP = 100;                 //最大生命值，默认100
 
@@ -46,6 +50,7 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, ICon
     public LayerMask groundLayerMask; // 地面层
 
     protected bool isOnGround;
+    public bool IsOnGround { get { return isOnGround; } }
     protected float speedX;
     protected bool isJump;
     protected float tolerance = 1e-7f;  // 浮点数和int类型的最小误差（可有可无）
@@ -65,7 +70,7 @@ public abstract class BaseCharacterBehaviour : MonoBehaviour, IHeal, IHurt, ICon
         coll = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
         canvasTransform = transform.Find("Canvas");
-        
+        gravityScale = rb.gravityScale;
         InitData();
     }
 

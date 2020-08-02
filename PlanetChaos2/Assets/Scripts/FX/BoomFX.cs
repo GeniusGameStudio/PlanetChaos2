@@ -51,7 +51,7 @@ public class BoomFX : BaseFX
             hurt.DoHurt(damage);
 
             Rigidbody2D rb = collision.GetComponent<Rigidbody2D>();
-            if(rb != null)
+            if(rb != null && damage != 0)
             {
                 Vector2 vec = boomToCollision.normalized;
                 float force = maxForce * 100000 / (distance + 1f);

@@ -117,6 +117,7 @@ public abstract class BaseGun : BaseEquipment, IShootBullet
     /// <param name="shootPower"></param>
     public void ShootBullet(Transform shootTransform, float shootPower)
     {
+        TurnBaseMgr.GetInstance().IsPauseTimer = true;
         EventCenter.GetInstance().EventTrigger("发射子弹");
         MusicMgr.GetInstance().StopSound(storageSound);
         MusicMgr.GetInstance().PlaySound(bulletSoundName, false);

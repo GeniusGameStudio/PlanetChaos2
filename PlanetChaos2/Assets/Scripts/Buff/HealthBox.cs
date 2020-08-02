@@ -12,6 +12,16 @@ public class HealthBox : BaseBuff, IDestructable
 
     private Collision2D collision;
 
+    private Rigidbody2D rb;
+
+    private float gravityScale;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        gravityScale = rb.gravityScale;
+    }
+
     public void Destruct(CircleCollider2D coll)
     {
         //GameObject boomEffect = ResMgr.GetInstance().Load<GameObject>("FX/BoomEffect");
@@ -40,5 +50,23 @@ public class HealthBox : BaseBuff, IDestructable
     {
         this.collision = collision;
         Effect();
+    }
+
+    protected void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            rb.gravityScale = 0;
+            rb.velocity = Vector2.zero;
+        }
+    }
+
+    protected void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            rb.gravityScale = gravityScale;
+            //rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
 }

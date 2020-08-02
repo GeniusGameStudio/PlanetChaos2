@@ -27,4 +27,6 @@ public abstract class BaseBuff : MonoBehaviour, IEffect
         coll = GetComponent<Collider2D>();
         sprite = GetComponent<SpriteRenderer>();
     }
+
+
 }

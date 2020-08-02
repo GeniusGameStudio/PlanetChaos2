@@ -147,6 +147,7 @@ public class GameManager : BaseManager<GameManager>
         IsShowLeftMenu = false;
         IsShowItemPanel = false;
         IsGamePaused = false;
+        IsUsedItem = false;
     }
 
     public void Init()

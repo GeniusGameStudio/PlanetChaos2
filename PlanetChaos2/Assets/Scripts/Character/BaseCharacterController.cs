@@ -33,6 +33,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
     {
         if(transform.position.y < -5f || transform.position.x < -8f || transform.position.x > 8f)
         {
+            TurnBaseMgr.GetInstance().RemainingTime = 1;
             Die();
         }
     }
@@ -40,11 +41,19 @@ public class BaseCharacterController : BaseCharacterBehaviour
 
     protected void Update()
     {
-        if (isAlive && IsControlling)
+        if (isAlive)
         {
-            isOnGround = OnGround();
-            ProcessInput();
+            if (IsControlling)
+            {
+                ProcessInput();
+            }
             CheckBorder();
+        }
+        
+        isOnGround = OnGround();
+        if (!isOnGround)
+        {
+            rb.gravityScale = gravityScale;
         }
         SwitchAnim();
     }
@@ -102,6 +111,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
     /// </summary>
     protected override void Jump()
     {
+
         // 按下Jump
         if (Mathf.Abs(Input.GetAxis("Jump") - 1) < tolerance && !isJump)
         {
@@ -206,6 +216,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
     /// </summary>
     protected override void Hurt()
     {
+        isHurt = true;
         anim.SetBool("isHurt", true);
         Invoke("EndHurt", 1f);
     }
@@ -213,6 +224,7 @@ public class BaseCharacterController : BaseCharacterBehaviour
     protected void EndHurt()
     {
         anim.SetBool("isHurt", false);
+        isHurt = false;
     }
 
     protected override void Die()
@@ -240,4 +252,26 @@ public class BaseCharacterController : BaseCharacterBehaviour
     {
         EventCenter.GetInstance().RemoveEventListener<bool>("武器朝右", OnIsWeaponRight);
     }
+
+    protected void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            if (!isJump && !isHurt)
+            {
+                rb.gravityScale = 0;
+                rb.velocity = Vector2.zero;
+            }
+        }
+    }
+
+    protected void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            rb.gravityScale = gravityScale;
+            //rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+    }
+
 }

@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c784c07f2b42df64e8677b60179afe8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDamage: 80
-  maxForce: 2
+  maxDamage: 55
+  maxForce: 1.5
 --- !u!58 &1187931950004870920
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -226,4 +226,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.2

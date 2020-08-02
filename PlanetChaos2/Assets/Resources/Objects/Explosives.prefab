@@ -362,7 +362,3 @@ MonoBehaviour:
   effectLayer:
     serializedVersion: 2
     m_Bits: 1792
-  destructAreaColl: {fileID: 1013079842}
-  layer:
-    serializedVersion: 2
-    m_Bits: 512

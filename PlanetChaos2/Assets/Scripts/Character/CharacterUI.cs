@@ -9,8 +9,6 @@ public class CharacterUI : MonoBehaviour
 
     public Text playerNameText;
 
-    public Image panelImage;
-
     public Text playerHP_Text;
 
     private void Start()
@@ -26,7 +24,7 @@ public class CharacterUI : MonoBehaviour
 
     public void SetColor(Color color)
     {
-        SetPanelColor(color);
+        SetPlayerNameColor(color);
         SetPlayerHPTextColor(color);
         SetTurnImageColor(color);
     }
@@ -36,9 +34,9 @@ public class CharacterUI : MonoBehaviour
         playerHP_Text.color = color;
     }
 
-    public void SetPanelColor(Color color)
+    public void SetPlayerNameColor(Color color)
     {
-        panelImage.color = color;
+        playerNameText.color = color;
     }
 
     public void SetPlayerName(string name)

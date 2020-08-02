@@ -19,6 +19,12 @@ public class BaseEquipment : MonoBehaviour, IEquipment
     //是否是武器（如果不是，则不需要改变朝向）
     protected bool isWeapon;
 
+    //装备在角色的transform
+    protected Transform playerTransform;
+
+    //装备在角色的rigidbody
+    protected Rigidbody2D playerRb;
+
     /// <summary>
     /// 设置装备名称
     /// </summary>
@@ -90,6 +96,8 @@ public class BaseEquipment : MonoBehaviour, IEquipment
         {
             Debug.Log(equipName + "，装备在了" + player.gameObject.name + "身上");
             transform.SetParent(player, false);
+            playerTransform = player;
+            playerRb = player.GetComponent<Rigidbody2D>();
             isEquipedSelf = true;
         }
         else

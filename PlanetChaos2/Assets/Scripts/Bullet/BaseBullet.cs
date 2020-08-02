@@ -21,7 +21,7 @@ public abstract class BaseBullet : MonoBehaviour, IShoot, IDisappear
         rb.velocity = shootDirection * shootPower;
     }
 
-    protected void UpdateAngle()
+    protected virtual void UpdateAngle()
     {
         Vector2 dir = new Vector2(rb.velocity.x, rb.velocity.y);
 
@@ -38,8 +38,8 @@ public abstract class BaseBullet : MonoBehaviour, IShoot, IDisappear
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        //8秒后销毁，以免占用内存
-        Invoke("Disappear", 8f);
+        //15秒后销毁，以免占用内存
+        Invoke("Disappear", 15f);
     }
 
     private void Start()
