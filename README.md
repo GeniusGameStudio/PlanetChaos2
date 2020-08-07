@@ -3,7 +3,14 @@ Optimized version of `Planet Chaos`.
 
 Working in progress.
 
-[LatestRelease](https://github.com/GeniusGameStudio/PlanetChaos2/releases/tag/0.2)
+[LatestRelease](https://github.com/GeniusGameStudio/PlanetChaos2/releases/tag/0.3)
+
+
+
+## 2020.8.7 Updates
+
+- Switched to Universal Render Pipeline!!
+- New Tip UI added.
 
 
 
@@ -85,3 +92,19 @@ Working in progress.
 ![GamePlay4](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay4.png?raw=true)
 
 ![GamePlay5](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay5.png?raw=true)
+
+
+
+![GamePlay6](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay6.png?raw=true)
+
+
+
+![GamePlay7](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay7.png?raw=true)
+
+
+
+![GamePlay8](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay8.png?raw=true)
+
+
+
+![GamePlay9](https://github.com/GeniusGameStudio/PlanetChaos2/blob/master/Screenshots/GamePlay8.png?raw=true)

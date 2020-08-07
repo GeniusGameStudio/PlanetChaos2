@@ -14,6 +14,7 @@ public class EquipBagItem : BagItem
         EquipMgr.GetInstance().Unload(currentPlayer);
         EquipMgr.GetInstance().Equip(equipName, currentPlayer);
         UIManager.GetInstance().HidePanel("Battle/ItemPanel");
+        UIManager.GetInstance().ShowPanel<BasePanel>("Battle/ItemTipPanel");
         GameManager.GetInstance().IsShowItemPanel = false;
         GameManager.GetInstance().IsChooseItem = false;
         GameManager.GetInstance().IsUsedItem = true;

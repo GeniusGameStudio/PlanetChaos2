@@ -113,9 +113,9 @@ MonoBehaviour:
     width: 1898
     height: 931
   m_MinSize: {x: 678, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MaxSize: {x: 18003, y: 14042}
   vertical: 0
-  controlID: 28499
+  controlID: 5258
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -137,10 +137,10 @@ MonoBehaviour:
     y: 0
     width: 1298
     height: 931
-  m_MinSize: {x: 402, y: 492}
+  m_MinSize: {x: 403, y: 492}
   m_MaxSize: {x: 14003, y: 14042}
   vertical: 1
-  controlID: 28548
+  controlID: 5188
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -162,10 +162,10 @@ MonoBehaviour:
     y: 0
     width: 1298
     height: 659
-  m_MinSize: {x: 402, y: 221}
-  m_MaxSize: {x: 8002, y: 4021}
+  m_MinSize: {x: 403, y: 221}
+  m_MaxSize: {x: 8003, y: 4021}
   vertical: 0
-  controlID: 28549
+  controlID: 5189
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -213,13 +213,13 @@ MonoBehaviour:
     height: 659
   m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 14}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   - {fileID: 14}
   - {fileID: 17}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 333, y: 271}
   m_MaxSize: {x: 14003, y: 10021}
   vertical: 0
-  controlID: 28506
+  controlID: 5215
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -347,8 +347,8 @@ MonoBehaviour:
     m_Tooltip: 
   m_Pos:
     serializedVersion: 2
-    x: 507
-    y: 81
+    x: 499
+    y: 19
     width: 798
     height: 638
   m_ViewDataDictionary: {fileID: 0}
@@ -387,7 +387,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -396,23 +396,23 @@ MonoBehaviour:
       serializedVersion: 2
       x: 0
       y: 21
-      width: 798
-      height: 617
-    m_Scale: {x: 0.415625, y: 0.415625}
-    m_Translation: {x: 399, y: 308.5}
+      width: 1898
+      height: 891
+    m_Scale: {x: 0.8249999, y: 0.825}
+    m_Translation: {x: 949, y: 445.5}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -960
-      y: -742.2556
-      width: 1920
-      height: 1484.5112
+      x: -1150.3031
+      y: -540
+      width: 2300.6062
+      height: 1080
     m_MinimalGUI: 1
-  m_defaultScale: 0.415625
-  m_LastWindowPixelSize: {x: 798, y: 638}
+  m_defaultScale: 0.825
+  m_LastWindowPixelSize: {x: 1898, y: 912}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000
@@ -447,9 +447,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: ac3e0000
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 669bfeff7cb3feff0ac3feff30c3feff7cc3feff1ac4feff2cc4feff3cc4feff50c4feff74c4feff76c4feffa0d0feffdce1feffeee1feff02e2feff4ee2feffdae2feffece2fefffee2feff0ee3feff22e3feff32e3feff46e3feff48e3feffa2ebfeff44f1feff94f1feff8af2feffa4f5feff4002ffffae0cffffc40cffff961bffff481dffffb61dffffe629ffff0040ffff4e40ffff9c40ffff0046ffff4a46ffff7046ffff9447ffff5851ffff7855ffff58f9ffff6af9ffff7ef9ffffa6f9ffffcaf9ffff0cfaffff56faffff66faffff78faffff7cfaffff5cfbffff
+      m_ExpandedIDs: 749cffffe49cffff7ea0fffffaa0ffff0aa1ffff1aa1ffff18dcffff1ce4ffff1ee4ffff7aecffffecf5ffff3efaffff4afaffff50faffff54faffff5cfbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -509,9 +509,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -1.7365906, y: 0.43572104, z: 23.024263}
+    m_Target: {x: 0.06725114, y: -0.61544627, z: 24.519531}
     speed: 2
-    m_Value: {x: -1.7365906, y: 0.43572104, z: 23.024263}
+    m_Value: {x: 0.06725114, y: -0.61544627, z: 24.519531}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -561,9 +561,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.943397
+    m_Target: 7.6194043
     speed: 2
-    m_Value: 4.943397
+    m_Value: 7.9784336
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -653,20 +653,20 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Resources/UI/Battle
   m_ViewMode: 1
   m_StartGridSize: 56
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Resources/UI/Battle
   m_LastFoldersGridSize: 56
   m_LastProjectPath: D:\JackZhang\GitHub\GameDevelopment\PlanetChaos2\PlanetChaos2
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 361}
-    m_SelectedIDs: 843e0000
-    m_LastClickedID: 16004
-    m_ExpandedIDs: 00000000403e0000423e0000443e0000463e0000483e00004a3e00004c3e00004e3e000000ca9a3b
+    scrollPos: {x: 0, y: 345}
+    m_SelectedIDs: 76500000
+    m_LastClickedID: 20598
+    m_ExpandedIDs: 0000000034480000944c0000964c0000984c00009a4c00009c4c00009e4c0000a04c0000d04c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -694,7 +694,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000403e0000423e0000443e0000463e0000483e00004a3e00004c3e00004e3e000000ca9a3b
+    m_ExpandedIDs: 0000000034480000944c0000964c0000984c00009a4c00009c4c00009e4c0000a04c000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1148,7 +1148,7 @@ MonoBehaviour:
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 100
 --- !u!114 &23
 MonoBehaviour:
   m_ObjectHideFlags: 52

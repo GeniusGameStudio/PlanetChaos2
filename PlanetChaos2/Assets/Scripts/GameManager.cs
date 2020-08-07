@@ -74,6 +74,7 @@ public class GameManager : BaseManager<GameManager>
                     {
                         Time.timeScale = 0;
                         UIManager.GetInstance().ShowPanel<LeftMenuPanel>("Battle/LeftMenuPanel");
+                        UIManager.GetInstance().HidePanel("Battle/EscapeTipPanel");
                         IsShowLeftMenu = true;
                         IsGamePaused = true;
                     }
@@ -81,6 +82,7 @@ public class GameManager : BaseManager<GameManager>
                     {
                         Time.timeScale = 1;
                         UIManager.GetInstance().HidePanel("Battle/LeftMenuPanel");
+                        UIManager.GetInstance().ShowPanel<BasePanel>("Battle/EscapeTipPanel");
                         IsShowLeftMenu = false;
                         IsGamePaused = false;
                     }
@@ -95,6 +97,7 @@ public class GameManager : BaseManager<GameManager>
                         if (!IsShowItemPanel)
                         {
                             UIManager.GetInstance().ShowPanel<ItemPanel>("Battle/ItemPanel");
+                            UIManager.GetInstance().HidePanel("Battle/ItemTipPanel");
                             IsChooseItem = true;
                             IsShowItemPanel = true;
                             Cursor.visible = true;
@@ -102,6 +105,7 @@ public class GameManager : BaseManager<GameManager>
                         else
                         {
                             UIManager.GetInstance().HidePanel("Battle/ItemPanel");
+                            UIManager.GetInstance().ShowPanel<BasePanel>("Battle/ItemTipPanel");
                             IsChooseItem = false;
                             IsShowItemPanel = false;
                         }
@@ -190,6 +194,8 @@ public class GameManager : BaseManager<GameManager>
             List<int> randomPointIndexs = Shuffle<int>(pointIndexs);
             CharacterMgr.GetInstance().InstantiateCharacters(characterInitPoints, randomPointIndexs, () => {
                 UIManager.GetInstance().ShowPanel<TimerPanel>("Battle/TimerPanel", E_UI_Layer.Top);
+                UIManager.GetInstance().ShowPanel<BasePanel>("Battle/ItemTipPanel", E_UI_Layer.Bot);
+                UIManager.GetInstance().ShowPanel<BasePanel>("Battle/EscapeTipPanel", E_UI_Layer.Bot);
                 TurnBaseMgr.GetInstance().Start();
             });
         }, 0.2f);
