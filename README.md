@@ -2,7 +2,7 @@
 Optimized version of `Planet Chaos`.
 
 Working in progress.
-
+![version](https://img.shields.io/badge/PlanetChaos2-0.3-green)
 [LatestRelease](https://github.com/GeniusGameStudio/PlanetChaos2/releases/tag/0.3)
 
 
